@@ -1,14 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML><HEAD>
-<META content="text/html; charset=windows-1250" http-equiv=Content-Type>
-<META name=GENERATOR content="MSHTML 8.00.7601.17514"></HEAD>
-<BODY><PRE>&lt;!DOCTYPE html&gt;
-&lt;html lang="pl"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Fiszki Angielskie&lt;/title&gt;
-    &lt;style&gt;
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiszki Angielskie</title>
+    <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -79,7 +75,7 @@
     border-radius: 15px;
     box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.4);
     transition: box-shadow 0.1s ease, transform 0.1s ease;
-    outline: none; /* Usuń domyślne obramowanie */
+    outline: none; /* UsuĹ„ domyĹ›lne obramowanie */
 }
 
 .btn:active, .btnin:active, .btnin2:active {
@@ -131,12 +127,12 @@
     border: 1px solid #ccc;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     transition: background-color 4.3s, color 1.3s, border-color 1.3s;
-    background-color: white; /* Domyślny kolor tła */
-    color: black; /* Domyślny kolor tekstu */
+    background-color: white; /* DomyĹ›lny kolor tĹ‚a */
+    color: black; /* DomyĹ›lny kolor tekstu */
 }
 
 select.dark-mode {
-    background-color: #444; /* Ciemny kolor tła */
+    background-color: #444; /* Ciemny kolor tĹ‚a */
     color: #eee; /* Jasny kolor tekstu */
     border: 1px solid #777; /* Ciemniejszy kolor obramowania */
 }
@@ -151,8 +147,8 @@ select.dark-mode {
     height: 25px;
     border-radius: 50%;
     border: none;
-    background-color: #121212; /* Domyślny kolor tła */
-    color: white; /* Domyślny kolor ikony */
+    background-color: #121212; /* DomyĹ›lny kolor tĹ‚a */
+    color: white; /* DomyĹ›lny kolor ikony */
              vertical-align: middle;
     font-size: 30px;
     cursor: pointer;
@@ -164,27 +160,27 @@ select.dark-mode {
 }
 
 .circle-toggle.dark-mode {
-    background-color: #666; /* Kolor tła w trybie ciemnym */
+    background-color: #666; /* Kolor tĹ‚a w trybie ciemnym */
     color: #eee; /* Kolor ikony w trybie ciemnym */
     box-shadow: 4px 8px 10px rgba(255, 255, 255, 0.2);
 }
 
 .circle-toggle.inverted {
-    background-color: white; /* Odwrócony kolor tła */
-    color: #333; /* Odwrócony kolor ikony */
+    background-color: white; /* OdwrĂłcony kolor tĹ‚a */
+    color: #333; /* OdwrĂłcony kolor ikony */
 }
 
 .circle-toggle.dark-mode.inverted {
-    background-color: #333; /* Odwrócony kolor tła w trybie ciemnym */
-    color: white; /* Odwrócony kolor ikony w trybie ciemnym */
+    background-color: #333; /* OdwrĂłcony kolor tĹ‚a w trybie ciemnym */
+    color: white; /* OdwrĂłcony kolor ikony w trybie ciemnym */
 }
 
 
 .header-container {
     display: flex;
-    align-items: center; /* Wyrównanie w pionie */
-    justify-content: flex-start; /* wyrównanie do lewej strony */
-    width: 100%; /* Zajmuje całą szerokość */
+    align-items: center; /* WyrĂłwnanie w pionie */
+    justify-content: flex-start; /* wyrĂłwnanie do lewej strony */
+    width: 100%; /* Zajmuje caĹ‚Ä… szerokoĹ›Ä‡ */
     padding: 10px;
     box-sizing: border-box;
 }
@@ -193,60 +189,60 @@ select.dark-mode {
    
 
 .centered-text {
-    flex-grow: 1; /* Wypełnia wolną przestrzeń */
+    flex-grow: 1; /* WypeĹ‚nia wolnÄ… przestrzeĹ„ */
     text-align: center; /* Centrowanie tekstu */
-    margin-left: 20px; /* Dodaje odstęp od lewej strony tekstu */
+    margin-left: 20px; /* Dodaje odstÄ™p od lewej strony tekstu */
 }
         #error-message {
             color: red;
             display: none;
         }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
+    </style>
+</head>
+<body>
 
-&lt;div class="header-container"&gt;
-    &lt;button id="darkModeToggle" class="circle-toggle"&gt;&amp;#9788;&lt;/button&gt;
-    &lt;span class="centered-text"&gt;WYBIERZ ZESTAW FISZEK&lt;/span&gt;
-&lt;/div&gt;
+<div class="header-container">
+    <button id="darkModeToggle" class="circle-toggle">&#9788;</button>
+    <span class="centered-text">WYBIERZ ZESTAW FISZEK</span>
+</div>
        
-&lt;select id="kategoria" onchange="
+<select id="kategoria" onchange="
     var kategoria = this.value;
     var flashcardSet = document.getElementById('flashcard-set');
     flashcardSet.innerHTML = '';
 
     if (kategoria === 'A1 Starter') {
         flashcardSet.innerHTML = `
-        &lt;option value=''&gt;Wybierz fiszki&lt;/option&gt;
-            &lt;option value='Ciało A1S'&gt;Ciało A1S&lt;/option&gt;
-            &lt;option value='Dom A1S'&gt;Dom A1S&lt;/option&gt;
-            &lt;option value='Jedzenie A1S'&gt;Jedzenie A1S&lt;/option&gt;
-            &lt;option value='Kolory A1S'&gt;Kolory A1S&lt;/option&gt;
-            &lt;option value='Liczby A1S'&gt;Liczby A1S&lt;/option&gt;
-            &lt;option value='Określniki A1S'&gt;Określniki A1S&lt;/option&gt;
-            &lt;option value='Przyimki A1S'&gt;Przyimki A1S&lt;/option&gt;
-            &lt;option value='Przymiotniki A1S'&gt;Przymiotniki A1S&lt;/option&gt;
-            &lt;option value='Przysłówki A1S'&gt;Przysłówki A1S&lt;/option&gt;
-            &lt;option value='Pytania A1S'&gt;Pytania A1S&lt;/option&gt;
-            &lt;option value='Rodzina A1S'&gt;Rodzina A1S&lt;/option&gt;
-            &lt;option value='Ubrania A1S'&gt;Ubrania A1S&lt;/option&gt;
-            &lt;option value='Zaimki A1S'&gt;Zaimki A1S&lt;/option&gt;
-            &lt;option value='Zwierzęta A1S'&gt;Zwierzęta A1S&lt;/option&gt;
-            &lt;option value='Czas A1S'&gt;Czas A1S&lt;/option&gt;
-            &lt;option value='Hobby A1S'&gt;Hobby A1S&lt;/option&gt;
-            &lt;option value='Miejsca A1S'&gt;Miejsca A1S&lt;/option&gt;
-            &lt;option value='Otoczenie A1S'&gt;Otoczenie A1S&lt;/option&gt;
-            &lt;option value='Pojazdy A1S'&gt;Pojazdy A1S&lt;/option&gt;
-            &lt;option value='Szkoła A1S'&gt;Szkoła A1S&lt;/option&gt;
-            &lt;option value='Zabawki A1S'&gt;Zabawki A1S&lt;/option&gt;
-            &lt;option value='Czas.niereg. A1S'&gt;Czas.niereg. A1S&lt;/option&gt;
-            &lt;option value='Czas.regul. A1S'&gt;Czas.regul. A1S&lt;/option&gt;
-            &lt;option value='Rzeczow.1 A1S'&gt;Rzeczow.1 A1S&lt;/option&gt;
-            &lt;option value='Rzeczow.2 A1S'&gt;Rzeczow.2 A1S&lt;/option&gt;
-            &lt;option value='Rzeczow.3 A1S'&gt;Rzeczow.3 A1S&lt;/option&gt;
-            &lt;option value='Rzeczow.4 A1S'&gt;Rzeczow.4 A1S&lt;/option&gt;
-            &lt;option value='Rzeczow.5 A1S'&gt;Rzeczow.5 A1S&lt;/option&gt;
-            &lt;option value='Rzeczow.6 A1S'&gt;Rzeczow.6 A1S&lt;/option&gt;
+        <option value=''>Wybierz fiszki</option>
+            <option value='CiaĹ‚o A1S'>CiaĹ‚o A1S</option>
+            <option value='Dom A1S'>Dom A1S</option>
+            <option value='Jedzenie A1S'>Jedzenie A1S</option>
+            <option value='Kolory A1S'>Kolory A1S</option>
+            <option value='Liczby A1S'>Liczby A1S</option>
+            <option value='OkreĹ›lniki A1S'>OkreĹ›lniki A1S</option>
+            <option value='Przyimki A1S'>Przyimki A1S</option>
+            <option value='Przymiotniki A1S'>Przymiotniki A1S</option>
+            <option value='PrzysĹ‚Ăłwki A1S'>PrzysĹ‚Ăłwki A1S</option>
+            <option value='Pytania A1S'>Pytania A1S</option>
+            <option value='Rodzina A1S'>Rodzina A1S</option>
+            <option value='Ubrania A1S'>Ubrania A1S</option>
+            <option value='Zaimki A1S'>Zaimki A1S</option>
+            <option value='ZwierzÄ™ta A1S'>ZwierzÄ™ta A1S</option>
+            <option value='Czas A1S'>Czas A1S</option>
+            <option value='Hobby A1S'>Hobby A1S</option>
+            <option value='Miejsca A1S'>Miejsca A1S</option>
+            <option value='Otoczenie A1S'>Otoczenie A1S</option>
+            <option value='Pojazdy A1S'>Pojazdy A1S</option>
+            <option value='SzkoĹ‚a A1S'>SzkoĹ‚a A1S</option>
+            <option value='Zabawki A1S'>Zabawki A1S</option>
+            <option value='Czas.niereg. A1S'>Czas.niereg. A1S</option>
+            <option value='Czas.regul. A1S'>Czas.regul. A1S</option>
+            <option value='Rzeczow.1 A1S'>Rzeczow.1 A1S</option>
+            <option value='Rzeczow.2 A1S'>Rzeczow.2 A1S</option>
+            <option value='Rzeczow.3 A1S'>Rzeczow.3 A1S</option>
+            <option value='Rzeczow.4 A1S'>Rzeczow.4 A1S</option>
+            <option value='Rzeczow.5 A1S'>Rzeczow.5 A1S</option>
+            <option value='Rzeczow.6 A1S'>Rzeczow.6 A1S</option>
             
             
             
@@ -256,38 +252,37 @@ select.dark-mode {
     
     else if (kategoria === 'A1 Elementary') {
         flashcardSet.innerHTML = `
-        &lt;option value=''&gt;Wybierz fiszki&lt;/option&gt;
-            &lt;option value='Ciało A1E'&gt;Ciało A1E&lt;/option&gt;
-            &lt;option value='Czas A1E'&gt;Czas A1E&lt;/option&gt;
-            &lt;option value='Czasow.niereg. A1E'&gt;Czasow.niereg. A1E&lt;/option&gt;
-            &lt;option value='Czasow.regul. A1E'&gt;Czasow.regul. A1E&lt;/option&gt;
-            &lt;option value='Dom A1E'&gt;Dom A1E&lt;/option&gt;
-            &lt;option value='Hobby A1E'&gt;Hobby A1E&lt;/option&gt;
-            &lt;option value='Jedzenie A1E'&gt;Jedzenie A1E&lt;/option&gt;
-            &lt;option value='Liczby A1E'&gt;Liczby A1E&lt;/option&gt;
-            &lt;option value='Miejsca A1E'&gt;Miejsca A1E&lt;/option&gt;
-            &lt;option value='Określniki A1E'&gt;Określniki A1E&lt;/option&gt;
-            &lt;option value='Otoczenie A1E'&gt;Otoczenie A1E&lt;/option&gt;
-            &lt;option value='Pogoda A1E'&gt;Pogoda A1E&lt;/option&gt;
-            &lt;option value='Pojazdy A1E'&gt;Pojazdy A1E&lt;/option&gt;
-            &lt;option value='Praca A1E'&gt;Praca A1E&lt;/option&gt;
-            &lt;option value='Przyimek A1E'&gt;Przyimek A1E&lt;/option&gt;
-            &lt;option value='Przymiotniki 1 A1E'&gt;Przymiotniki 1 A1E&lt;/option&gt;
-            &lt;option value='Przymiotniki 2 A1E'&gt;Przymiotniki 2 A1E&lt;/option&gt;
-            &lt;option value='Przysłówki A1E'&gt;Przysłówki A1E&lt;/option&gt;
-            &lt;option value='Pytania A1E'&gt;Pytania A1E&lt;/option&gt;
-            &lt;option value='Rodzina A1E'&gt;Rodzina A1E&lt;/option&gt;
-            &lt;option value='Szkoła A1E'&gt;Szkoła A1E&lt;/option&gt;
-            &lt;option value='Ubrania A1E'&gt;Ubrania A1E&lt;/option&gt;
-            &lt;option value='Zaimki A1E'&gt;Zaimki A1E&lt;/option&gt;
-            &lt;option value='Zdrowie A1E'&gt;Zdrowie A1E&lt;/option&gt;
-            &lt;option value='Zwierzęta A1E'&gt;Zwierzęta A1E&lt;/option&gt;
-            &lt;option value='Rzeczow. 1 A1E'&gt;Rzeczow. 1 A1E&lt;/option&gt;
-            &lt;option value='Rzeczow. 2 A1E'&gt;Rzeczow. 2 A1E&lt;/option&gt;
-            &lt;option value='Rzeczow. 3 A1E'&gt;Rzeczow. 3 A1E&lt;/option&gt;
-            &lt;option value='Rzeczow. 4 A1E'&gt;Rzeczow. 4 A1E&lt;/option&gt;
-            &lt;option value='Rzeczow. 5 A1E'&gt;Rzeczow. 5 A1E&lt;/option&gt;
-            
+        <option value=''>Wybierz fiszki</option>
+            <option value='CiaĹ‚o A1E'>CiaĹ‚o A1E</option>
+            <option value='Czas A1E'>Czas A1E</option>
+            <option value='Czasow.niereg. A1E'>Czasow.niereg. A1E</option>
+            <option value='Czasow.regul. A1E'>Czasow.regul. A1E</option>
+            <option value='Dom A1E'>Dom A1E</option>
+            <option value='Hobby A1E'>Hobby A1E</option>
+            <option value='Jedzenie A1E'>Jedzenie A1E</option>
+            <option value='Liczby A1E'>Liczby A1E</option>
+            <option value='Miejsca A1E'>Miejsca A1E</option>
+            <option value='OkreĹ›lniki A1E'>OkreĹ›lniki A1E</option>
+            <option value='Otoczenie A1E'>Otoczenie A1E</option>
+            <option value='Pogoda A1E'>Pogoda A1E</option>
+            <option value='Pojazdy A1E'>Pojazdy A1E</option>
+            <option value='Praca A1E'>Praca A1E</option>
+            <option value='Przyimek A1E'>Przyimek A1E</option>
+            <option value='Przymiotniki 1 A1E'>Przymiotniki 1 A1E</option>
+            <option value='Przymiotniki 2 A1E'>Przymiotniki 2 A1E</option>
+            <option value='PrzysĹ‚Ăłwki A1E'>PrzysĹ‚Ăłwki A1E</option>
+            <option value='Pytania A1E'>Pytania A1E</option>
+            <option value='Rodzina A1E'>Rodzina A1E</option>
+            <option value='Rzeczow. 1 A1E'>Rzeczow. 1 A1E</option>
+            <option value='Rzeczow. 2 A1E'>Rzeczow. 2 A1E</option>
+            <option value='Rzeczow. 3 A1E'>Rzeczow. 3 A1E</option>
+            <option value='Rzeczow. 4 A1E'>Rzeczow. 4 A1E</option>
+            <option value='Rzeczow. 5 A1E'>Rzeczow. 5 A1E</option>
+            <option value='SzkoĹ‚a A1E'>SzkoĹ‚a A1E</option>
+            <option value='Ubrania A1E'>Ubrania A1E</option>
+            <option value='Zaimki A1E'>Zaimki A1E</option>
+            <option value='Zdrowie A1E'>Zdrowie A1E</option>
+            <option value='ZwierzÄ™ta A1E'>ZwierzÄ™ta A1E</option>
             
             
             
@@ -297,37 +292,37 @@ select.dark-mode {
        
        
   
-"&gt;
-    &lt;option value=""&gt;Wybierz kategorię&lt;/option&gt;
-    &lt;option value="A1 Starter"&gt;A1 Starter&lt;/option&gt;
-    &lt;option value="A1 Elementary"&gt;A1 Elementary&lt;/option&gt;
+">
+    <option value="">Wybierz kategoriÄ™</option>
+    <option value="A1 Starter">A1 Starter</option>
+    <option value="A1 Elementary">A1 Elementary</option>
     
-&lt;/select&gt;
+</select>
 
-&lt;select id="flashcard-set" onchange="changeFlashcardSet()"&gt;&lt;/select&gt;
+<select id="flashcard-set" onchange="changeFlashcardSet()"></select>
 
 
 
 
    
-    &lt;p&gt;Ile fiszek pozostało&lt;/p&gt;
-    &lt;div class="counter" id="counter"&gt;0/0&lt;/div&gt;
-     &lt;div class="flashcard" id="flashcard" onclick="flipFlashcard()"&gt;
-    &lt;div class="front" id="word"&gt;Loading...&lt;/div&gt;
-    &lt;div class="back"&gt;
-        &lt;div id="translation"&gt;Loading...&lt;/div&gt;
-        &lt;div id="phonetics"&gt;Loading...&lt;/div&gt;
-        &lt;button class="btn" id="showFourthColumnBtn" onclick="showFourthColumn(event)"&gt;Więcej&lt;/button&gt;
+    <p>Ile fiszek pozostaĹ‚o</p>
+    <div class="counter" id="counter">0/0</div>
+     <div class="flashcard" id="flashcard" onclick="flipFlashcard()">
+    <div class="front" id="word">Loading...</div>
+    <div class="back">
+        <div id="translation">Loading...</div>
+        <div id="phonetics">Loading...</div>
+        <button class="btn" id="showFourthColumnBtn" onclick="showFourthColumn(event)">WiÄ™cej</button>
        
-    &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;button class="btn" id="prevBtn" onclick="changeFlashcard('prev')"&gt; Poprzednia &lt;/button&gt;
-    &lt;button class="btn" id="nextBtn" onclick="changeFlashcard('next')"style=margin-left:20px;&gt; Następna &lt;/button&gt;
-    &lt;div class="dropdown-container"&gt;
+    </div>
+    </div>
+    <button class="btn" id="prevBtn" onclick="changeFlashcard('prev')"> Poprzednia </button>
+    <button class="btn" id="nextBtn" onclick="changeFlashcard('next')"style=margin-left:20px;> NastÄ™pna </button>
+    <div class="dropdown-container">
        
-    &lt;/div&gt;
+    </div>
 
-&lt;script&gt;
+<script>
     let flashcards = [];
     let currentIndex = 0;
     let history = [];
@@ -360,7 +355,7 @@ document.getElementById("word").style.fontSize = "17px";
 /* A1 STARTER */ 
 
         
-        if (setName === "Ciało A1S") {
+        if (setName === "CiaĹ‚o A1S") {
             return "https://docs.google.com/spreadsheets/d/14I5BTD7jj5d9bpOYHZIBJ6ooHkvGuOa6/gviz/tq?tqx=out:csv";
         } 
         
@@ -377,7 +372,7 @@ document.getElementById("word").style.fontSize = "17px";
                          else if (setName === "Liczby A1S") {
             return "https://docs.google.com/spreadsheets/d/1z2WXm-u7w2OpyEw5HfWw2_d6YIhxFK27/gviz/tq?tqx=out:csv";
         }
-                             else if (setName === "Określniki A1S") {
+                             else if (setName === "OkreĹ›lniki A1S") {
             return "https://docs.google.com/spreadsheets/d/1P1KWC-T5O4wQDLHDp2P3oXNtNofcAwd2/gviz/tq?tqx=out:csv";
         }
                                  else if (setName === "Przyimki A1S") {
@@ -386,7 +381,7 @@ document.getElementById("word").style.fontSize = "17px";
                                      else if (setName === "Przymiotniki A1S") {
             return "https://docs.google.com/spreadsheets/d/1e63SISSaO2CyNa8ItZ2ipNKMviQrAhC-/gviz/tq?tqx=out:csv";
         }
-                                         else if (setName === "Przysłówki A1S") {
+                                         else if (setName === "PrzysĹ‚Ăłwki A1S") {
             return "https://docs.google.com/spreadsheets/d/19D7tUGM_iAcJ1ncjX5KbaTVStU0C3jkU/gviz/tq?tqx=out:csv";
         }
                                              else if (setName === "Pytania A1S") {
@@ -401,7 +396,7 @@ document.getElementById("word").style.fontSize = "17px";
                                                          else if (setName === "Zaimki A1S") {
             return "https://docs.google.com/spreadsheets/d/1TKbrtJU4ZO3CRPiNWayk_aHaNimuy9pB/gviz/tq?tqx=out:csv";
         }
-                                                             else if (setName === "Zwierzęta A1S") {
+                                                             else if (setName === "ZwierzÄ™ta A1S") {
             return "https://docs.google.com/spreadsheets/d/1abSa2r3_dv2-YxN7U3nfSE342SAAT8Yt/gviz/tq?tqx=out:csv";
         }
                                                                  else if (setName === "Czas A1S") {
@@ -443,7 +438,7 @@ document.getElementById("word").style.fontSize = "17px";
                                                                                                                  else if (setName === "Rzeczow.6 A1S") {
             return "https://docs.google.com/spreadsheets/d/1dUJ9xhVF5EEabkw8QIhKyxOtB56lW3um/gviz/tq?tqx=out:csv";
         }
-                                                                                                                     else if (setName === "Szkoła A1S") {
+                                                                                                                     else if (setName === "SzkoĹ‚a A1S") {
             return "https://docs.google.com/spreadsheets/d/1lyTUgSRLGft7_bimp6OZMC6mbOJzYJUc/gviz/tq?tqx=out:csv";
         }
                                                                                                                          else if (setName === "Zabawki A1S") {
@@ -457,7 +452,7 @@ document.getElementById("word").style.fontSize = "17px";
 /* A1 ELEMENTARY */ 
     
             
-        else if (setName === "Ciało A1E") {
+        else if (setName === "CiaĹ‚o A1E") {
             return "https://docs.google.com/spreadsheets/d/1xodDoChNmQkWsgiehMas_mvzJDMAoIPh/gviz/tq?tqx=out:csv";
         }
 
@@ -485,7 +480,7 @@ document.getElementById("word").style.fontSize = "17px";
                                         else if (setName === "Miejsca A1E") {
             return "https://docs.google.com/spreadsheets/d/1Jdre-RFUh2TKi5QrPP3PNU0hsdKR0ReQ/gviz/tq?tqx=out:csv";
         }
-                                            else if (setName === "Określniki A1E") {
+                                            else if (setName === "OkreĹ›lniki A1E") {
             return "https://docs.google.com/spreadsheets/d/1zkdf3dKtRoryndhHYZFos7O_qbcM3Fxh/gviz/tq?tqx=out:csv";
         }
                                                  else if (setName === "Otoczenie A1E") {
@@ -509,7 +504,7 @@ document.getElementById("word").style.fontSize = "17px";
                                                                          else if (setName === "Przymiotniki 2 A1E") {
             return "https://docs.google.com/spreadsheets/d/1tae6VlHo0GYITgRak4PCtazPRqbXjhYT/gviz/tq?tqx=out:csv";
         }
-                                                                             else if (setName === "Przysłówki A1E") {
+                                                                             else if (setName === "PrzysĹ‚Ăłwki A1E") {
             return "https://docs.google.com/spreadsheets/d/1hSgcnejP_Y6cNy8OvMFabEj4u1VH9FLf/gviz/tq?tqx=out:csv";
         }
                                                                                  else if (setName === "Pytania A1E") {
@@ -533,7 +528,7 @@ document.getElementById("word").style.fontSize = "17px";
                                                                                                                  else if (setName === "Rzeczow. 5 A1E") {
             return "https://docs.google.com/spreadsheets/d/1uTldNI4Zubwl6fSqsb-W67IruUxZ5eXY/gviz/tq?tqx=out:csv";
         }
-                                                                                                                     else if (setName === "Szkoła A1E") {
+                                                                                                                     else if (setName === "SzkoĹ‚a A1E") {
             return "https://docs.google.com/spreadsheets/d/1cga0MZDp06O6TZEsHZMfOaQX98KqAKIo/gviz/tq?tqx=out:csv";
         }
                                                                                                                        else if (setName === "Ubrania A1E") {
@@ -545,7 +540,7 @@ document.getElementById("word").style.fontSize = "17px";
                                                                                                           else if (setName === "Zdrowie A1E") {
             return "https://docs.google.com/spreadsheets/d/1M4KJYKHU7DQwnCGd83q8dA6ivctIHyHQ/gviz/tq?tqx=out:csv";
         }
-                                                                                                     else if (setName === "Zwierzęta A1E") {
+                                                                                                     else if (setName === "ZwierzÄ™ta A1E") {
             return "https://docs.google.com/spreadsheets/d/1lmuGf_yxeP2eiXzA90vdJ-UFAIo8vk4Y/gviz/tq?tqx=out:csv";
         }
                                                                                                         
@@ -562,25 +557,25 @@ document.getElementById("word").style.fontSize = "17px";
         try {
             const response = await fetch(url);
             const text = await response.text();
-            const rows = text.split("\n").slice(1).filter(row =&gt; row.trim() !== "");
+            const rows = text.split("\n").slice(1).filter(row => row.trim() !== "");
            
-            flashcards = rows.map(row =&gt; {
-                const cols = row.split(",").map(col =&gt; col.replace(/"/g, "").trim());
+            flashcards = rows.map(row => {
+                const cols = row.split(",").map(col => col.replace(/"/g, "").trim());
                  return { word: cols[0] || "Unknown", translation: cols[1] || "Unknown", phonetics: cols[2] || "Unknown",
         column4: cols[3] || "Unknown"
     };
 
             });
 
-            // Losowanie kolejności tylko raz po załadowaniu
-            flashcards = flashcards.sort(() =&gt; Math.random() - 0.5);
+            // Losowanie kolejnoĹ›ci tylko raz po zaĹ‚adowaniu
+            flashcards = flashcards.sort(() => Math.random() - 0.5);
            
             currentIndex = 0;
             history = [];
             updateFlashcard();
         } catch (error) {
-            console.error("Błąd pobierania danych:", error);
-            document.getElementById("word").textContent = "Błąd ładowania";
+            console.error("BĹ‚Ä…d pobierania danych:", error);
+            document.getElementById("word").textContent = "BĹ‚Ä…d Ĺ‚adowania";
         }
     }
 
@@ -601,14 +596,14 @@ document.getElementById("word").style.fontSize = "17px";
 
         if (flashcardElement.classList.contains("flipped")) {
             flashcardElement.classList.remove("flipped");
-            setTimeout(() =&gt; {
+            setTimeout(() => {
                 updateFlashcardIndex(direction);
             }, 500);
         } else {
             updateFlashcardIndex(direction);
         }
 
-        setTimeout(() =&gt; {
+        setTimeout(() => {
             prevBtn.disabled = false;
             nextBtn.disabled = false;
         }, 500);
@@ -617,10 +612,10 @@ document.getElementById("word").style.fontSize = "17px";
     function updateFlashcardIndex(direction) {
         if (flashcards.length === 0) return;
 
-        if (direction === "next" &amp;&amp; currentIndex &lt; flashcards.length - 1) {
+        if (direction === "next" && currentIndex < flashcards.length - 1) {
             history.push(currentIndex);
             currentIndex++;
-        } else if (direction === "prev" &amp;&amp; history.length &gt; 0) {
+        } else if (direction === "prev" && history.length > 0) {
             currentIndex = history.pop();
         }
 
@@ -637,45 +632,45 @@ document.getElementById("word").style.fontSize = "17px";
 
     const word = flashcards[currentIndex].word;
     const utterance = new SpeechSynthesisUtterance(word);
-    utterance.lang = "en-GB"; // Ustawienie języka na brytyjski angielski
+    utterance.lang = "en-GB"; // Ustawienie jÄ™zyka na brytyjski angielski
 
    
        
         function setVoiceAndSpeak() {
         const voices = speechSynthesis.getVoices();
        
-        // Znajdujemy głos brytyjski - preferujemy naturalny głos
-        const britishVoice = voices.find(voice =&gt;
-            voice.lang.includes("en-GB") &amp;&amp;
+        // Znajdujemy gĹ‚os brytyjski - preferujemy naturalny gĹ‚os
+        const britishVoice = voices.find(voice =>
+            voice.lang.includes("en-GB") &&
             (voice.name.includes("UK") || voice.name.includes("British") || voice.localService)
         );
 
-        // Fallback, jeśli nie znaleziono konkretnego brytyjskiego głosu
+        // Fallback, jeĹ›li nie znaleziono konkretnego brytyjskiego gĹ‚osu
         if (britishVoice) {
             utterance.voice = britishVoice;
-            console.log("Używam brytyjskiego głosu:", britishVoice.name);
+            console.log("UĹĽywam brytyjskiego gĹ‚osu:", britishVoice.name);
         } else {
-            // Jeśli nie ma konkretnego głosu brytyjskiego, nadal używamy en-GB
-            console.log("Nie znaleziono preferowanego brytyjskiego głosu, używam domyślnego en-GB");
+            // JeĹ›li nie ma konkretnego gĹ‚osu brytyjskiego, nadal uĹĽywamy en-GB
+            console.log("Nie znaleziono preferowanego brytyjskiego gĹ‚osu, uĹĽywam domyĹ›lnego en-GB");
         }
 
-        utterance.rate = 0.9; // Lekkie spowolnienie dla lepszej wyraźności
-        utterance.pitch = 1.0; // Standardowa wysokość głosu
+        utterance.rate = 0.9; // Lekkie spowolnienie dla lepszej wyraĹşnoĹ›ci
+        utterance.pitch = 1.0; // Standardowa wysokoĹ›Ä‡ gĹ‚osu
        
         speechSynthesis.speak(utterance);
     }
 
-    // Sprawdzenie, czy głosy są już załadowane
-    if (speechSynthesis.getVoices().length &gt; 0) {
+    // Sprawdzenie, czy gĹ‚osy sÄ… juĹĽ zaĹ‚adowane
+    if (speechSynthesis.getVoices().length > 0) {
         setVoiceAndSpeak();
     } else {
         speechSynthesis.onvoiceschanged = setVoiceAndSpeak;
     }
 }
 
-// Opcjonalne wstępne ładowanie głosów
-window.addEventListener('DOMContentLoaded', () =&gt; {
-    speechSynthesis.getVoices(); // Wymuszenie załadowania listy głosów
+// Opcjonalne wstÄ™pne Ĺ‚adowanie gĹ‚osĂłw
+window.addEventListener('DOMContentLoaded', () => {
+    speechSynthesis.getVoices(); // Wymuszenie zaĹ‚adowania listy gĹ‚osĂłw
 });
 
 
@@ -686,16 +681,16 @@ window.addEventListener('DOMContentLoaded', () =&gt; {
 
     fetchFlashcards("peppa1");
    
-document.addEventListener("DOMContentLoaded", () =&gt; {
+document.addEventListener("DOMContentLoaded", () => {
     const flashcardElement = document.getElementById("flashcard");
     let touchStartX = 0;
     let touchEndX = 0;
 
-    flashcardElement.addEventListener("touchstart", (e) =&gt; {
+    flashcardElement.addEventListener("touchstart", (e) => {
         touchStartX = e.touches[0].clientX;
     });
 
-    flashcardElement.addEventListener("touchend", (e) =&gt; {
+    flashcardElement.addEventListener("touchend", (e) => {
         touchEndX = e.changedTouches[0].clientX;
         handleSwipe();
     });
@@ -703,20 +698,20 @@ document.addEventListener("DOMContentLoaded", () =&gt; {
     function handleSwipe() {
         const difference = touchStartX - touchEndX;
 
-        if (difference &gt; 50) {
-            changeFlashcard("next"); // Przesunięcie w lewo › następna fiszka
-        } else if (difference &lt; -50) {
-            changeFlashcard("prev"); // Przesunięcie w prawo › poprzednia fiszka
+        if (difference > 50) {
+            changeFlashcard("next"); // PrzesuniÄ™cie w lewo â†’ nastÄ™pna fiszka
+        } else if (difference < -50) {
+            changeFlashcard("prev"); // PrzesuniÄ™cie w prawo â†’ poprzednia fiszka
         }
        
     }
    
      });
- document.addEventListener("DOMContentLoaded", () =&gt; {
+ document.addEventListener("DOMContentLoaded", () => {
         // ... (listener dotykowy bez zmian)
 
-        // Obsługa trybu ciemnego
-        darkModeToggle.addEventListener("click", () =&gt; {
+        // ObsĹ‚uga trybu ciemnego
+        darkModeToggle.addEventListener("click", () => {
             body.classList.toggle("dark-mode");
             flashcardElement.classList.toggle("dark-mode");
             flashcardSetSelect.classList.toggle("dark-mode");
@@ -725,10 +720,10 @@ document.addEventListener("DOMContentLoaded", () =&gt; {
 
            
         if (body.classList.contains("dark-mode")) {
-                darkModeToggle.innerHTML = "&amp;#9788;"; // Księżyc
+                darkModeToggle.innerHTML = "&#9788;"; // KsiÄ™ĹĽyc
                 localStorage.setItem("darkMode", "enabled");
             } else {
-                darkModeToggle.innerHTML = "&amp;#9788;"; // Słońce
+                darkModeToggle.innerHTML = "&#9788;"; // SĹ‚oĹ„ce
                 localStorage.setItem("darkMode", "disabled");
             }
         });
@@ -739,19 +734,12 @@ document.addEventListener("DOMContentLoaded", () =&gt; {
             flashcardElement.classList.add("dark-mode");
             flashcardSetSelect.classList.add("dark-mode");
             kategoriaSelect.classList.add("dark-mode"); // Dodano ustawienie dla kategoriaSelect
-          darkModeToggle.innerHTML = "&amp;#9788;"; // Księżyc
-            darkModeToggle.classList.add('inverted'); // Dodajemy klasę 'inverted'
+          darkModeToggle.innerHTML = "&#9788;"; // KsiÄ™ĹĽyc
+            darkModeToggle.classList.add('inverted'); // Dodajemy klasÄ™ 'inverted'
         }
     });
 
-&lt;/script&gt;
- &lt;button class="btnin2" onclick="speakGoogle(event)"style=margin-top:-10px;&gt;&amp;#128266;WYMOWA&amp;#128266;&lt;/button&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-
-
-
-
-
-
-</PRE></BODY></HTML>
+</script>
+ <button class="btnin2" onclick="speakGoogle(event)"style=margin-top:-10px;>&#128266;WYMOWA&#128266;</button>
+</body>
+</html>
