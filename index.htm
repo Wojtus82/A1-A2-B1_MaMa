@@ -1,0 +1,757 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META content="text/html; charset=windows-1250" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.7601.17514"></HEAD>
+<BODY><PRE>&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Fiszki Angielskie&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            transition: background-color 4.3s, color 4.3s;
+        }
+
+        body.dark-mode {
+            background-color: #333;
+            color: #eee;
+        }
+
+        .flashcard {
+            width: 350px;
+            height: 400px;
+            margin: 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.5);
+       
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s, background-color 4.3s;
+        }
+
+        .flashcard.dark-mode {
+            background-color: #121212;
+            box-shadow: 10px 15px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard .front, .flashcard .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            border-radius: 30px;
+        }
+
+        .flashcard .back {
+            transform: rotateY(180deg);
+            flex-direction: column;
+        }
+
+        .counter {
+            font-size: 30px;
+            margin-bottom: 3px;
+        }
+
+        .btn, .btnin, .btnin2 {
+    width: 150px;
+    margin-top: 20px;
+    padding: 20px;
+   
+    border: none;
+    background: #007BFF;
+    color: white;
+    border-radius: 15px;
+    box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.1s ease, transform 0.1s ease;
+    outline: none; /* Usuń domyślne obramowanie */
+}
+
+.btn:active, .btnin:active, .btnin2:active {
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transform: translateY(2px);
+}
+        .btnin, .btnin2 {
+            margin-top: 60px;
+            width: 200px;
+            font-size: 20px;
+        }
+
+        .btnin2 {
+            width: 150px;
+            height: 50px;
+            margin-top: 5px;
+            margin-bottom: 0px;
+            padding: 20px;
+            font-size: 15px;
+            border-radius: 25px;
+        }
+
+        .btn:disabled {
+            background: #007BFF;
+            cursor: not-allowed;
+        }
+
+
+.btn:focus-visible, .btnin:focus-visible, .btnin2:focus-visible {
+    outline: 2px solid rgba(0, 123, 255, 0.5); /* Zmodyfikowane obramowanie */
+}
+
+.btn:focus:not(:focus-visible), .btnin:focus:not(:focus-visible), .btnin2:focus:not(:focus-visible){
+    outline: none;
+}
+
+       
+        .dropdown-container {
+            margin-top: 30px;
+        }
+
+    select {
+    width: 190px;
+    height: 50px;
+    font-size: 18px;
+    text-align: center;
+    text-align-last: center;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 4.3s, color 1.3s, border-color 1.3s;
+    background-color: white; /* Domyślny kolor tła */
+    color: black; /* Domyślny kolor tekstu */
+}
+
+select.dark-mode {
+    background-color: #444; /* Ciemny kolor tła */
+    color: #eee; /* Jasny kolor tekstu */
+    border: 1px solid #777; /* Ciemniejszy kolor obramowania */
+}
+
+        .dark-mode .btn, .dark-mode .btnin, .dark-mode .btnin2 {
+            background-color: #555;
+            box-shadow: 4px 8px 10px rgba(255, 255, 255, 0.2);
+        }
+       
+        .circle-toggle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: none;
+    background-color: #121212; /* Domyślny kolor tła */
+    color: white; /* Domyślny kolor ikony */
+             vertical-align: middle;
+    font-size: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s;
+}
+
+.circle-toggle.dark-mode {
+    background-color: #666; /* Kolor tła w trybie ciemnym */
+    color: #eee; /* Kolor ikony w trybie ciemnym */
+    box-shadow: 4px 8px 10px rgba(255, 255, 255, 0.2);
+}
+
+.circle-toggle.inverted {
+    background-color: white; /* Odwrócony kolor tła */
+    color: #333; /* Odwrócony kolor ikony */
+}
+
+.circle-toggle.dark-mode.inverted {
+    background-color: #333; /* Odwrócony kolor tła w trybie ciemnym */
+    color: white; /* Odwrócony kolor ikony w trybie ciemnym */
+}
+
+
+.header-container {
+    display: flex;
+    align-items: center; /* Wyrównanie w pionie */
+    justify-content: flex-start; /* wyrównanie do lewej strony */
+    width: 100%; /* Zajmuje całą szerokość */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+   
+
+.centered-text {
+    flex-grow: 1; /* Wypełnia wolną przestrzeń */
+    text-align: center; /* Centrowanie tekstu */
+    margin-left: 20px; /* Dodaje odstęp od lewej strony tekstu */
+}
+        #error-message {
+            color: red;
+            display: none;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class="header-container"&gt;
+    &lt;button id="darkModeToggle" class="circle-toggle"&gt;&amp;#9788;&lt;/button&gt;
+    &lt;span class="centered-text"&gt;WYBIERZ ZESTAW FISZEK&lt;/span&gt;
+&lt;/div&gt;
+       
+&lt;select id="kategoria" onchange="
+    var kategoria = this.value;
+    var flashcardSet = document.getElementById('flashcard-set');
+    flashcardSet.innerHTML = '';
+
+    if (kategoria === 'A1 Starter') {
+        flashcardSet.innerHTML = `
+        &lt;option value=''&gt;Wybierz fiszki&lt;/option&gt;
+            &lt;option value='Ciało A1S'&gt;Ciało A1S&lt;/option&gt;
+            &lt;option value='Dom A1S'&gt;Dom A1S&lt;/option&gt;
+            &lt;option value='Jedzenie A1S'&gt;Jedzenie A1S&lt;/option&gt;
+            &lt;option value='Kolory A1S'&gt;Kolory A1S&lt;/option&gt;
+            &lt;option value='Liczby A1S'&gt;Liczby A1S&lt;/option&gt;
+            &lt;option value='Określniki A1S'&gt;Określniki A1S&lt;/option&gt;
+            &lt;option value='Przyimki A1S'&gt;Przyimki A1S&lt;/option&gt;
+            &lt;option value='Przymiotniki A1S'&gt;Przymiotniki A1S&lt;/option&gt;
+            &lt;option value='Przysłówki A1S'&gt;Przysłówki A1S&lt;/option&gt;
+            &lt;option value='Pytania A1S'&gt;Pytania A1S&lt;/option&gt;
+            &lt;option value='Rodzina A1S'&gt;Rodzina A1S&lt;/option&gt;
+            &lt;option value='Ubrania A1S'&gt;Ubrania A1S&lt;/option&gt;
+            &lt;option value='Zaimki A1S'&gt;Zaimki A1S&lt;/option&gt;
+            &lt;option value='Zwierzęta A1S'&gt;Zwierzęta A1S&lt;/option&gt;
+            &lt;option value='Czas A1S'&gt;Czas A1S&lt;/option&gt;
+            &lt;option value='Hobby A1S'&gt;Hobby A1S&lt;/option&gt;
+            &lt;option value='Miejsca A1S'&gt;Miejsca A1S&lt;/option&gt;
+            &lt;option value='Otoczenie A1S'&gt;Otoczenie A1S&lt;/option&gt;
+            &lt;option value='Pojazdy A1S'&gt;Pojazdy A1S&lt;/option&gt;
+            &lt;option value='Szkoła A1S'&gt;Szkoła A1S&lt;/option&gt;
+            &lt;option value='Zabawki A1S'&gt;Zabawki A1S&lt;/option&gt;
+            &lt;option value='Czas.niereg. A1S'&gt;Czas.niereg. A1S&lt;/option&gt;
+            &lt;option value='Czas.regul. A1S'&gt;Czas.regul. A1S&lt;/option&gt;
+            &lt;option value='Rzeczow.1 A1S'&gt;Rzeczow.1 A1S&lt;/option&gt;
+            &lt;option value='Rzeczow.2 A1S'&gt;Rzeczow.2 A1S&lt;/option&gt;
+            &lt;option value='Rzeczow.3 A1S'&gt;Rzeczow.3 A1S&lt;/option&gt;
+            &lt;option value='Rzeczow.4 A1S'&gt;Rzeczow.4 A1S&lt;/option&gt;
+            &lt;option value='Rzeczow.5 A1S'&gt;Rzeczow.5 A1S&lt;/option&gt;
+            &lt;option value='Rzeczow.6 A1S'&gt;Rzeczow.6 A1S&lt;/option&gt;
+            
+            
+            
+            
+        `;
+    } 
+    
+    else if (kategoria === 'A1 Elementary') {
+        flashcardSet.innerHTML = `
+        &lt;option value=''&gt;Wybierz fiszki&lt;/option&gt;
+            &lt;option value='Ciało A1E'&gt;Ciało A1E&lt;/option&gt;
+            &lt;option value='Czas A1E'&gt;Czas A1E&lt;/option&gt;
+            &lt;option value='Czasow.niereg. A1E'&gt;Czasow.niereg. A1E&lt;/option&gt;
+            &lt;option value='Czasow.regul. A1E'&gt;Czasow.regul. A1E&lt;/option&gt;
+            &lt;option value='Dom A1E'&gt;Dom A1E&lt;/option&gt;
+            &lt;option value='Hobby A1E'&gt;Hobby A1E&lt;/option&gt;
+            &lt;option value='Jedzenie A1E'&gt;Jedzenie A1E&lt;/option&gt;
+            &lt;option value='Liczby A1E'&gt;Liczby A1E&lt;/option&gt;
+            &lt;option value='Miejsca A1E'&gt;Miejsca A1E&lt;/option&gt;
+            &lt;option value='Określniki A1E'&gt;Określniki A1E&lt;/option&gt;
+            &lt;option value='Otoczenie A1E'&gt;Otoczenie A1E&lt;/option&gt;
+            &lt;option value='Pogoda A1E'&gt;Pogoda A1E&lt;/option&gt;
+            &lt;option value='Pojazdy A1E'&gt;Pojazdy A1E&lt;/option&gt;
+            &lt;option value='Praca A1E'&gt;Praca A1E&lt;/option&gt;
+            &lt;option value='Przyimek A1E'&gt;Przyimek A1E&lt;/option&gt;
+            &lt;option value='Przymiotniki 1 A1E'&gt;Przymiotniki 1 A1E&lt;/option&gt;
+            &lt;option value='Przymiotniki 2 A1E'&gt;Przymiotniki 2 A1E&lt;/option&gt;
+            &lt;option value='Przysłówki A1E'&gt;Przysłówki A1E&lt;/option&gt;
+            &lt;option value='Pytania A1E'&gt;Pytania A1E&lt;/option&gt;
+            &lt;option value='Rodzina A1E'&gt;Rodzina A1E&lt;/option&gt;
+            &lt;option value='Szkoła A1E'&gt;Szkoła A1E&lt;/option&gt;
+            &lt;option value='Ubrania A1E'&gt;Ubrania A1E&lt;/option&gt;
+            &lt;option value='Zaimki A1E'&gt;Zaimki A1E&lt;/option&gt;
+            &lt;option value='Zdrowie A1E'&gt;Zdrowie A1E&lt;/option&gt;
+            &lt;option value='Zwierzęta A1E'&gt;Zwierzęta A1E&lt;/option&gt;
+            &lt;option value='Rzeczow. 1 A1E'&gt;Rzeczow. 1 A1E&lt;/option&gt;
+            &lt;option value='Rzeczow. 2 A1E'&gt;Rzeczow. 2 A1E&lt;/option&gt;
+            &lt;option value='Rzeczow. 3 A1E'&gt;Rzeczow. 3 A1E&lt;/option&gt;
+            &lt;option value='Rzeczow. 4 A1E'&gt;Rzeczow. 4 A1E&lt;/option&gt;
+            &lt;option value='Rzeczow. 5 A1E'&gt;Rzeczow. 5 A1E&lt;/option&gt;
+            
+            
+            
+            
+           
+        `;
+    }
+       
+       
+  
+"&gt;
+    &lt;option value=""&gt;Wybierz kategorię&lt;/option&gt;
+    &lt;option value="A1 Starter"&gt;A1 Starter&lt;/option&gt;
+    &lt;option value="A1 Elementary"&gt;A1 Elementary&lt;/option&gt;
+    
+&lt;/select&gt;
+
+&lt;select id="flashcard-set" onchange="changeFlashcardSet()"&gt;&lt;/select&gt;
+
+
+
+
+   
+    &lt;p&gt;Ile fiszek pozostało&lt;/p&gt;
+    &lt;div class="counter" id="counter"&gt;0/0&lt;/div&gt;
+     &lt;div class="flashcard" id="flashcard" onclick="flipFlashcard()"&gt;
+    &lt;div class="front" id="word"&gt;Loading...&lt;/div&gt;
+    &lt;div class="back"&gt;
+        &lt;div id="translation"&gt;Loading...&lt;/div&gt;
+        &lt;div id="phonetics"&gt;Loading...&lt;/div&gt;
+        &lt;button class="btn" id="showFourthColumnBtn" onclick="showFourthColumn(event)"&gt;Więcej&lt;/button&gt;
+       
+    &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="btn" id="prevBtn" onclick="changeFlashcard('prev')"&gt; Poprzednia &lt;/button&gt;
+    &lt;button class="btn" id="nextBtn" onclick="changeFlashcard('next')"style=margin-left:20px;&gt; Następna &lt;/button&gt;
+    &lt;div class="dropdown-container"&gt;
+       
+    &lt;/div&gt;
+
+&lt;script&gt;
+    let flashcards = [];
+    let currentIndex = 0;
+    let history = [];
+    const flashcardElement = document.getElementById("flashcard");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const body = document.body;
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const kategoriaSelect = document.getElementById("kategoria");
+    const flashcardSetSelect = document.getElementById("flashcard-set");
+
+
+   
+    function showFourthColumn() {
+    if (flashcards.length === 0) return;
+document.getElementById("word").style.fontSize = "17px";
+
+       
+    const card = flashcards[currentIndex];
+    document.getElementById("word").textContent = card.column4 || "Brak danych";
+}
+document.getElementById("word").style.fontSize = "17px";
+
+
+
+
+    function getSheetUrl(setName) {
+
+        
+/* A1 STARTER */ 
+
+        
+        if (setName === "Ciało A1S") {
+            return "https://docs.google.com/spreadsheets/d/14I5BTD7jj5d9bpOYHZIBJ6ooHkvGuOa6/gviz/tq?tqx=out:csv";
+        } 
+        
+        else if (setName === "Dom A1S") {
+            return "https://docs.google.com/spreadsheets/d/1gxSlhsfJopijbglnTuHnnnYxKFJBg1SD/gviz/tq?tqx=out:csv";
+        }
+
+             else if (setName === "Jedzenie A1S") {
+            return "https://docs.google.com/spreadsheets/d/1yz1-3qZrJj-ozTua7oB0W7-dFu1tdTSt/gviz/tq?tqx=out:csv";
+        }
+                     else if (setName === "Kolory A1S") {
+            return "https://docs.google.com/spreadsheets/d/1v0cXf25a8wgGTqP4Vgr6nbxGURMz2hnQ/gviz/tq?tqx=out:csv";
+        }
+                         else if (setName === "Liczby A1S") {
+            return "https://docs.google.com/spreadsheets/d/1z2WXm-u7w2OpyEw5HfWw2_d6YIhxFK27/gviz/tq?tqx=out:csv";
+        }
+                             else if (setName === "Określniki A1S") {
+            return "https://docs.google.com/spreadsheets/d/1P1KWC-T5O4wQDLHDp2P3oXNtNofcAwd2/gviz/tq?tqx=out:csv";
+        }
+                                 else if (setName === "Przyimki A1S") {
+            return "https://docs.google.com/spreadsheets/d/1J4vfyohHw3ullbNrQr0mQa0tjpvpnfC7/gviz/tq?tqx=out:csv";
+        }
+                                     else if (setName === "Przymiotniki A1S") {
+            return "https://docs.google.com/spreadsheets/d/1e63SISSaO2CyNa8ItZ2ipNKMviQrAhC-/gviz/tq?tqx=out:csv";
+        }
+                                         else if (setName === "Przysłówki A1S") {
+            return "https://docs.google.com/spreadsheets/d/19D7tUGM_iAcJ1ncjX5KbaTVStU0C3jkU/gviz/tq?tqx=out:csv";
+        }
+                                             else if (setName === "Pytania A1S") {
+            return "https://docs.google.com/spreadsheets/d/1Z0wuN8V7S7gvreSYyNdgAfBwwZ06RkGu/gviz/tq?tqx=out:csv";
+        }
+                                                 else if (setName === "Rodzina A1S") {
+            return "https://docs.google.com/spreadsheets/d/1yB4jP6pa64WSgqswy7NNhEySeSpry2Ss/gviz/tq?tqx=out:csv";
+        }
+                                                     else if (setName === "Ubrania A1S") {
+            return "https://docs.google.com/spreadsheets/d/18JwJTaKGnNTat3d5O1Am2b3I-c07GwDt/gviz/tq?tqx=out:csv";
+        }
+                                                         else if (setName === "Zaimki A1S") {
+            return "https://docs.google.com/spreadsheets/d/1TKbrtJU4ZO3CRPiNWayk_aHaNimuy9pB/gviz/tq?tqx=out:csv";
+        }
+                                                             else if (setName === "Zwierzęta A1S") {
+            return "https://docs.google.com/spreadsheets/d/1abSa2r3_dv2-YxN7U3nfSE342SAAT8Yt/gviz/tq?tqx=out:csv";
+        }
+                                                                 else if (setName === "Czas A1S") {
+            return "https://docs.google.com/spreadsheets/d/1tPBpsggcbq_YlV_xdJFVv3uFz4y4M8sH/gviz/tq?tqx=out:csv";
+        }
+                                                                     else if (setName === "Hobby A1S") {
+            return "https://docs.google.com/spreadsheets/d/15Ecr9yFpVc33Sb2wYRfr9WwwI5nZB7gO/gviz/tq?tqx=out:csv";
+        }
+                                                                         else if (setName === "Miejsca A1S") {
+            return "https://docs.google.com/spreadsheets/d/1IJ8dqvJMUIA0_UZKEEAceaWDDVfFlouY/gviz/tq?tqx=out:csv";
+        }
+                                                                             else if (setName === "Otoczenie A1S") {
+            return "https://docs.google.com/spreadsheets/d/1YdKxHVr3GtB6ylRo5_V2dTkvGdmt7oh3/gviz/tq?tqx=out:csv";
+        }
+                                                                                 else if (setName === "Pojazdy A1S") {
+            return "https://docs.google.com/spreadsheets/d/1OH8NR_a3U7DY6Kc3GChyM5njjOAJNx0G/gviz/tq?tqx=out:csv";
+        }
+                                                                                     else if (setName === "Czas.niereg. A1S") {
+            return "https://docs.google.com/spreadsheets/d/1JPNtsBCfaAhiE-Y_6C2oCKoUAvEj-N8A/gviz/tq?tqx=out:csv";
+        }
+                                                                                         else if (setName === "Czas.regul. A1S") {
+            return "https://docs.google.com/spreadsheets/d/1zQU5DQSyHWvaspkTjG02Pl5FXCjbQpT7/gviz/tq?tqx=out:csv";
+        }
+                                                                                             else if (setName === "Rzeczow.1 A1S") {
+            return "https://docs.google.com/spreadsheets/d/1N-TYPTdIZ2ZmmgvxuilWTgysn3djaPAM/gviz/tq?tqx=out:csv";
+        }
+                                                                                                 else if (setName === "Rzeczow.2 A1S") {
+            return "https://docs.google.com/spreadsheets/d/1N1SM5KpiIm8MYOqX8s86pTHPnCM9Mr0W/gviz/tq?tqx=out:csv";
+        }
+                                                                                                     else if (setName === "Rzeczow.3 A1S") {
+            return "https://docs.google.com/spreadsheets/d/1LC2VsWqO0iJqWWSBAjQWF393HETm6ntj/gviz/tq?tqx=out:csv";
+        }
+                                                                                                         else if (setName === "Rzeczow.4 A1S") {
+            return "https://docs.google.com/spreadsheets/d/1R6YlN5zmaVD4DreKkDvzqL6InDcND-ra/gviz/tq?tqx=out:csv";
+        }
+                                                                                                             else if (setName === "Rzeczow.5 A1S") {
+            return "https://docs.google.com/spreadsheets/d/101p8vbxkX1gIAtBw7j8nrCsjBMNcsGA4/gviz/tq?tqx=out:csv";
+        }
+                                                                                                                 else if (setName === "Rzeczow.6 A1S") {
+            return "https://docs.google.com/spreadsheets/d/1dUJ9xhVF5EEabkw8QIhKyxOtB56lW3um/gviz/tq?tqx=out:csv";
+        }
+                                                                                                                     else if (setName === "Szkoła A1S") {
+            return "https://docs.google.com/spreadsheets/d/1lyTUgSRLGft7_bimp6OZMC6mbOJzYJUc/gviz/tq?tqx=out:csv";
+        }
+                                                                                                                         else if (setName === "Zabawki A1S") {
+            return "https://docs.google.com/spreadsheets/d/1_3FZXuURAuQDkJhITSHnR1LuGRc6v20h/gviz/tq?tqx=out:csv";
+        }
+                                                                                                                             
+                                                                                     
+                 
+
+
+/* A1 ELEMENTARY */ 
+    
+            
+        else if (setName === "Ciało A1E") {
+            return "https://docs.google.com/spreadsheets/d/1xodDoChNmQkWsgiehMas_mvzJDMAoIPh/gviz/tq?tqx=out:csv";
+        }
+
+             else if (setName === "Czas A1E") {
+            return "https://docs.google.com/spreadsheets/d/1uCPDpxgyAXxl8e9ZyXNdozt6sMzFHWyT/gviz/tq?tqx=out:csv";
+        }
+                 else if (setName === "Czasow.niereg. A1E") {
+            return "https://docs.google.com/spreadsheets/d/19bB4fdHPMZiA3neLG5pwMVIhbxo9Llq1/gviz/tq?tqx=out:csv";
+        }
+                     else if (setName === "Czasow.regul. A1E") {
+            return "https://docs.google.com/spreadsheets/d/1i_CzchnQRj_By-maamonE9Q5LR2BjiZY/gviz/tq?tqx=out:csv";
+        }
+                         else if (setName === "Dom A1E") {
+            return "https://docs.google.com/spreadsheets/d/13Ri0CJFW_WWOmiSOD2WZXHqCGOe2HSvb/gviz/tq?tqx=out:csv";
+        }
+                             else if (setName === "Hobby A1E") {
+            return "https://docs.google.com/spreadsheets/d/17Yfrzh4yAIWQPleuAA4tBTmGprNf0QqU/gviz/tq?tqx=out:csv";
+        }
+                                 else if (setName === "Jedzenie A1E") {
+            return "https://docs.google.com/spreadsheets/d/1HYpDp0xS31ABWC-G7lL2p2Z7oBmX2OoC/gviz/tq?tqx=out:csv";
+        }
+                                    else if (setName === "Liczby A1E") {
+            return "https://docs.google.com/spreadsheets/d/1p_Oczna_akRymLm5s9Wpa9dKnpzw3NEK/gviz/tq?tqx=out:csv";
+        }
+                                        else if (setName === "Miejsca A1E") {
+            return "https://docs.google.com/spreadsheets/d/1Jdre-RFUh2TKi5QrPP3PNU0hsdKR0ReQ/gviz/tq?tqx=out:csv";
+        }
+                                            else if (setName === "Określniki A1E") {
+            return "https://docs.google.com/spreadsheets/d/1zkdf3dKtRoryndhHYZFos7O_qbcM3Fxh/gviz/tq?tqx=out:csv";
+        }
+                                                 else if (setName === "Otoczenie A1E") {
+            return "https://docs.google.com/spreadsheets/d/1the0zsKsNYNU-Bjwe6_fCY7b5LQwQwss/gviz/tq?tqx=out:csv";
+        }
+                                                     else if (setName === "Pogoda A1E") {
+            return "https://docs.google.com/spreadsheets/d/1bCJcC5T2YDukezYoVPvv3rW_-1PTRV61/gviz/tq?tqx=out:csv";
+        }
+                                                         else if (setName === "Pojazdy A1E") {
+            return "https://docs.google.com/spreadsheets/d/17nmfQ6hAIP4W6Au6NOSx9nNADSErNQeC/gviz/tq?tqx=out:csv";
+        }
+                                                             else if (setName === "Praca A1E") {
+            return "https://docs.google.com/spreadsheets/d/1cSE53DfCxzI6rOAAKevW6PvCGOcJEy3D/gviz/tq?tqx=out:csv";
+        }
+                                                                 else if (setName === "Przyimek A1E") {
+            return "https://docs.google.com/spreadsheets/d/1uZSG8g-Knc66EdJx9UeI6mmPaqIoiPew/gviz/tq?tqx=out:csv";
+        }
+                                                                      else if (setName === "Przymiotniki 1 A1E") {
+            return "https://docs.google.com/spreadsheets/d/1bdVBGCRPyNhBNy5YFaCZY7DRA3sy-Woq/gviz/tq?tqx=out:csv";
+        }
+                                                                         else if (setName === "Przymiotniki 2 A1E") {
+            return "https://docs.google.com/spreadsheets/d/1tae6VlHo0GYITgRak4PCtazPRqbXjhYT/gviz/tq?tqx=out:csv";
+        }
+                                                                             else if (setName === "Przysłówki A1E") {
+            return "https://docs.google.com/spreadsheets/d/1hSgcnejP_Y6cNy8OvMFabEj4u1VH9FLf/gviz/tq?tqx=out:csv";
+        }
+                                                                                 else if (setName === "Pytania A1E") {
+            return "https://docs.google.com/spreadsheets/d/1VOXK53nfedFWCg7Pk9vzDh0ahA7T5HDc/gviz/tq?tqx=out:csv";
+        }
+                                                                                           else if (setName === "Rodzina A1E") {
+            return "https://docs.google.com/spreadsheets/d/1DOIto97BLVrmPJzAXmwTNzV_K2Qc36vJ/gviz/tq?tqx=out:csv";
+        }
+                                                                                                else if (setName === "Rzeczow. 1 A1E") {
+            return "https://docs.google.com/spreadsheets/d/1tVam-jpYrqS_5ySIT_IWbP0JQNSYwHC3/gviz/tq?tqx=out:csv";
+        }
+                                                                                                     else if (setName === "Rzeczow. 2 A1E") {
+            return "https://docs.google.com/spreadsheets/d/1CBa43Sydf79e72o5Fgrfh908SM1M5H80/gviz/tq?tqx=out:csv";
+        }
+                                                                                                         else if (setName === "Rzeczow. 3 A1E") {
+            return "https://docs.google.com/spreadsheets/d/1c9NMhYxyrBLYSoNAKiPYwBC6-N9kk0wP/gviz/tq?tqx=out:csv";
+        }
+                                                                                                             else if (setName === "Rzeczow. 4 A1E") {
+            return "https://docs.google.com/spreadsheets/d/1F8luCg_75rJMqEZnU-fBRRjbjRzpfHkD/gviz/tq?tqx=out:csv";
+        }
+                                                                                                                 else if (setName === "Rzeczow. 5 A1E") {
+            return "https://docs.google.com/spreadsheets/d/1uTldNI4Zubwl6fSqsb-W67IruUxZ5eXY/gviz/tq?tqx=out:csv";
+        }
+                                                                                                                     else if (setName === "Szkoła A1E") {
+            return "https://docs.google.com/spreadsheets/d/1cga0MZDp06O6TZEsHZMfOaQX98KqAKIo/gviz/tq?tqx=out:csv";
+        }
+                                                                                                                       else if (setName === "Ubrania A1E") {
+            return "https://docs.google.com/spreadsheets/d/1H0aX81zB2rHFSPvwGsWmZUNt3lntq-1r/gviz/tq?tqx=out:csv";
+        }
+                                                                                                                 else if (setName === "Zaimki A1E") {
+            return "https://docs.google.com/spreadsheets/d/1klANe8nnsIPnS7OOoR5Ozynl6RYSsvov/gviz/tq?tqx=out:csv";
+        }
+                                                                                                          else if (setName === "Zdrowie A1E") {
+            return "https://docs.google.com/spreadsheets/d/1M4KJYKHU7DQwnCGd83q8dA6ivctIHyHQ/gviz/tq?tqx=out:csv";
+        }
+                                                                                                     else if (setName === "Zwierzęta A1E") {
+            return "https://docs.google.com/spreadsheets/d/1lmuGf_yxeP2eiXzA90vdJ-UFAIo8vk4Y/gviz/tq?tqx=out:csv";
+        }
+                                                                                                        
+                
+    
+        
+        return null;
+    }
+
+    async function fetchFlashcards(setName) {
+        const url = getSheetUrl(setName);
+        if (!url) return;
+
+        try {
+            const response = await fetch(url);
+            const text = await response.text();
+            const rows = text.split("\n").slice(1).filter(row =&gt; row.trim() !== "");
+           
+            flashcards = rows.map(row =&gt; {
+                const cols = row.split(",").map(col =&gt; col.replace(/"/g, "").trim());
+                 return { word: cols[0] || "Unknown", translation: cols[1] || "Unknown", phonetics: cols[2] || "Unknown",
+        column4: cols[3] || "Unknown"
+    };
+
+            });
+
+            // Losowanie kolejności tylko raz po załadowaniu
+            flashcards = flashcards.sort(() =&gt; Math.random() - 0.5);
+           
+            currentIndex = 0;
+            history = [];
+            updateFlashcard();
+        } catch (error) {
+            console.error("Błąd pobierania danych:", error);
+            document.getElementById("word").textContent = "Błąd ładowania";
+        }
+    }
+
+    function updateFlashcard() {
+        if (flashcards.length === 0) return;
+        flashcardElement.classList.remove("flipped"); // Reset do frontu
+        const card = flashcards[currentIndex];
+        document.getElementById("word").textContent = card.word;
+        document.getElementById("translation").textContent = card.translation;
+        document.getElementById("phonetics").textContent = card.phonetics;
+        document.getElementById("counter").textContent = `${currentIndex + 1}/${flashcards.length}`;
+        document.getElementById("word").style.fontSize = "40px";
+    }
+
+    function changeFlashcard(direction) {
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+
+        if (flashcardElement.classList.contains("flipped")) {
+            flashcardElement.classList.remove("flipped");
+            setTimeout(() =&gt; {
+                updateFlashcardIndex(direction);
+            }, 500);
+        } else {
+            updateFlashcardIndex(direction);
+        }
+
+        setTimeout(() =&gt; {
+            prevBtn.disabled = false;
+            nextBtn.disabled = false;
+        }, 500);
+    }
+
+    function updateFlashcardIndex(direction) {
+        if (flashcards.length === 0) return;
+
+        if (direction === "next" &amp;&amp; currentIndex &lt; flashcards.length - 1) {
+            history.push(currentIndex);
+            currentIndex++;
+        } else if (direction === "prev" &amp;&amp; history.length &gt; 0) {
+            currentIndex = history.pop();
+        }
+
+        updateFlashcard();
+    }
+
+    function flipFlashcard() {
+        flashcardElement.classList.toggle("flipped");
+    }
+
+    function speakGoogle(event) {
+    event.stopPropagation();
+    if (flashcards.length === 0) return;
+
+    const word = flashcards[currentIndex].word;
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = "en-GB"; // Ustawienie języka na brytyjski angielski
+
+   
+       
+        function setVoiceAndSpeak() {
+        const voices = speechSynthesis.getVoices();
+       
+        // Znajdujemy głos brytyjski - preferujemy naturalny głos
+        const britishVoice = voices.find(voice =&gt;
+            voice.lang.includes("en-GB") &amp;&amp;
+            (voice.name.includes("UK") || voice.name.includes("British") || voice.localService)
+        );
+
+        // Fallback, jeśli nie znaleziono konkretnego brytyjskiego głosu
+        if (britishVoice) {
+            utterance.voice = britishVoice;
+            console.log("Używam brytyjskiego głosu:", britishVoice.name);
+        } else {
+            // Jeśli nie ma konkretnego głosu brytyjskiego, nadal używamy en-GB
+            console.log("Nie znaleziono preferowanego brytyjskiego głosu, używam domyślnego en-GB");
+        }
+
+        utterance.rate = 0.9; // Lekkie spowolnienie dla lepszej wyraźności
+        utterance.pitch = 1.0; // Standardowa wysokość głosu
+       
+        speechSynthesis.speak(utterance);
+    }
+
+    // Sprawdzenie, czy głosy są już załadowane
+    if (speechSynthesis.getVoices().length &gt; 0) {
+        setVoiceAndSpeak();
+    } else {
+        speechSynthesis.onvoiceschanged = setVoiceAndSpeak;
+    }
+}
+
+// Opcjonalne wstępne ładowanie głosów
+window.addEventListener('DOMContentLoaded', () =&gt; {
+    speechSynthesis.getVoices(); // Wymuszenie załadowania listy głosów
+});
+
+
+    function changeFlashcardSet() {
+        const selectedSet = document.getElementById("flashcard-set").value;
+        fetchFlashcards(selectedSet);
+    }
+
+    fetchFlashcards("peppa1");
+   
+document.addEventListener("DOMContentLoaded", () =&gt; {
+    const flashcardElement = document.getElementById("flashcard");
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    flashcardElement.addEventListener("touchstart", (e) =&gt; {
+        touchStartX = e.touches[0].clientX;
+    });
+
+    flashcardElement.addEventListener("touchend", (e) =&gt; {
+        touchEndX = e.changedTouches[0].clientX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const difference = touchStartX - touchEndX;
+
+        if (difference &gt; 50) {
+            changeFlashcard("next"); // Przesunięcie w lewo › następna fiszka
+        } else if (difference &lt; -50) {
+            changeFlashcard("prev"); // Przesunięcie w prawo › poprzednia fiszka
+        }
+       
+    }
+   
+     });
+ document.addEventListener("DOMContentLoaded", () =&gt; {
+        // ... (listener dotykowy bez zmian)
+
+        // Obsługa trybu ciemnego
+        darkModeToggle.addEventListener("click", () =&gt; {
+            body.classList.toggle("dark-mode");
+            flashcardElement.classList.toggle("dark-mode");
+            flashcardSetSelect.classList.toggle("dark-mode");
+            kategoriaSelect.classList.toggle("dark-mode");
+            darkModeToggle.classList.toggle('inverted');
+
+           
+        if (body.classList.contains("dark-mode")) {
+                darkModeToggle.innerHTML = "&amp;#9788;"; // Księżyc
+                localStorage.setItem("darkMode", "enabled");
+            } else {
+                darkModeToggle.innerHTML = "&amp;#9788;"; // Słońce
+                localStorage.setItem("darkMode", "disabled");
+            }
+        });
+
+        // Sprawdzenie zapisanego trybu ciemnego
+        if (localStorage.getItem("darkMode") === "enabled") {
+            body.classList.add("dark-mode");
+            flashcardElement.classList.add("dark-mode");
+            flashcardSetSelect.classList.add("dark-mode");
+            kategoriaSelect.classList.add("dark-mode"); // Dodano ustawienie dla kategoriaSelect
+          darkModeToggle.innerHTML = "&amp;#9788;"; // Księżyc
+            darkModeToggle.classList.add('inverted'); // Dodajemy klasę 'inverted'
+        }
+    });
+
+&lt;/script&gt;
+ &lt;button class="btnin2" onclick="speakGoogle(event)"style=margin-top:-10px;&gt;&amp;#128266;WYMOWA&amp;#128266;&lt;/button&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+
+
+
+
+
+</PRE></BODY></HTML>
