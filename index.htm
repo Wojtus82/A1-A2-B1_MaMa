@@ -289,13 +289,55 @@ select.dark-mode {
            
         `;
     }
-       
+
+
+    else if (kategoria === 'A2 Low') {
+        flashcardSet.innerHTML = `
+    <option value=''>Wybierz fiszki</option>
+    <option value='Ciało A2L'>Ciało A2L</option>
+    <option value='Zwierzęta A2L'>Zwierzęta A2L</option>
+    <option value='Czas.niereg. A2L'>Czas.niereg. A2L</option>
+    <option value='Czasow.reg. A2L'>Czasow.reg. A2L</option>
+    <option value='Czas.modalne A2L'>Czas.modalne A2L</option>
+    <option value='Dom A2L'>Dom A2L</option>
+    <option value='Hobby A2L'>Hobby A2L</option>
+    <option value='Jedzenie A2L'>Jedzenie A2L</option>
+    <option value='Kolory A2L'>Kolory A2L</option>
+    <option value='Liczby A2L'>Liczby A2L</option>
+    <option value='Materiały A2L'>Materiały A2L</option>
+    <option value='Miejsca A2L'>Miejsca A2L</option>
+    <option value='Określniki A2L'>Określniki A2L</option>
+    <option value='Otoczenie A2L'>Otoczenie A2L</option>
+    <option value='Pogoda A2L'>Pogoda A2L</option>
+    <option value='Pojazdy A2L'>Pojazdy A2L</option>
+    <option value='Praca A2L'>Praca A2L</option>
+    <option value='Przyimki A2L'>Przyimki A2L</option>
+    <option value='Przymiotniki 1 A2L'>Przymiotniki 1 A2L</option>
+    <option value='Przymiotniki 2 A1E'>Przymiotniki 2 A1E</option>
+    <option value='Przysłówki A2L'>Przysłówki A2L</option>
+    <option value='Rodzina A2L'>Rodzina A2L</option>
+    <option value='Spójniki A2L'>Spójniki A2L</option>
+    <option value='Szkoła A2L'>Szkoła A2L</option
+    <option value='Ubrania A2L'>Ubrania A2L</option
+    <option value='Zaimki A2L'>Zaimki A2L</option
+    <option value='Zdrowie A2L'>Zdrowie A2L</option
+    <option value='Zwierzęta A2L'>Zwierzęta A2L</option
+    <option value='Rzeczowniki 1 A2L'>Rzeczowniki 1 A2L</option>
+    <option value='Rzeczowniki 2 A2L'>Rzeczowniki 2 A2L</option>
+    <option value='Rzeczowniki 3 A2L'>Rzeczowniki 3 A2L</option>
+    <option value='Rzeczowniki 4 A2L'>Rzeczowniki 4 A2L</option>
+    <option value='Rzeczowniki 5 A2L'>Rzeczowniki 5 A2L</option>
+    <option value='Rzeczowniki 6 A2L'>Rzeczowniki 6 A2L</option>
+    
+    `;
+    }
        
   
 ">
     <option value="">Wybierz kategorię</option>
     <option value="A1 Starter">A1 Starter</option>
     <option value="A1 Elementary">A1 Elementary</option>
+    <option value="A2 Low">A2 Low</option>
     
 </select>
 
@@ -545,7 +587,122 @@ document.getElementById("word").style.fontSize = "17px";
         }
                                                                                                         
                 
+    /* A2 Low */   
+
+            else if (setName === "Ciało A2L") {
+            return "https://docs.google.com/spreadsheets/d/1ps1a4ol7GxsqmsBolNHQbN_eJsX0_6Mi/gviz/tq?tqx=out:csv";
+        }
+                 else if (setName === "Zwierzęta A2L") {
+            return "https://docs.google.com/spreadsheets/d/1T6nsMMYqO6h_gpjR37wZiObAGY3_Q0-X/gviz/tq?tqx=out:csv";
+        }
+                     else if (setName === "Czas.niereg. A2L") {
+            return "https://docs.google.com/spreadsheets/d/1Juz-PfXdwDWHlJOIkmB2N4GIejEN710H/gviz/tq?tqx=out:csv";
+        }
+                         else if (setName === "Czasow.reg. A2L") {
+            return "https://docs.google.com/spreadsheets/d/1SKTQx4bmTuK1uyCBqydFC4hvA-J8vlgo/gviz/tq?tqx=out:csv";
+        }
+                             else if (setName === "Czas.modalne A2L") {
+            return "https://docs.google.com/spreadsheets/d/12aoRwEebHv4WwmmWMbMXGnBTtVwwOuol/gviz/tq?tqx=out:csv";
+        }
+                                 else if (setName === "Dom A2L") {
+            return "https://docs.google.com/spreadsheets/d/1djC-zPQAgH2qShUrdIn617gGMPObOLCX/gviz/tq?tqx=out:csv";
+        }
+                                     else if (setName === "Hobby A2L") {
+            return "https://docs.google.com/spreadsheets/d/1XKB0O8FzsxfGAjfVL8EOOduqo2webbbQ/gviz/tq?tqx=out:csv";
+        }
+                                         else if (setName === "Jedzenie A2L") {
+            return "https://docs.google.com/spreadsheets/d/1toAvuKVD9otDhRVOr8Sa45DRNNqx0og5/gviz/tq?tqx=out:csv";
+        }
+                                             else if (setName === "Kolory A2L") {
+            return "https://docs.google.com/spreadsheets/d/1xj-AnTii8d5WbVBiq0Pyvgx8HyL9xH-z/gviz/tq?tqx=out:csv";
+        }
+                                                 else if (setName === "Liczby A2L") {
+            return "https://docs.google.com/spreadsheets/d/1g42ys2wMlk_DrFvAEBKw6Qh28PvBgbOp/gviz/tq?tqx=out:csv";
+        }
+                                                     else if (setName === "Materiały A2L") {
+            return "https://docs.google.com/spreadsheets/d/1Ah07k0c0H3QEgESISUVYXRbi9JQaZiWr/gviz/tq?tqx=out:csv";
+        }
+                                                         else if (setName === "Miejsca A2L") {
+            return "https://docs.google.com/spreadsheets/d/1me7o6djZJEvtT70BhhIUgyiOY_WVTJmw/gviz/tq?tqx=out:csv";
+        }
+                                                             else if (setName === "Określniki A2L") {
+            return "https://docs.google.com/spreadsheets/d/1O8z2OxKFayeTKZ0FMUFYEIQWynzke86e/gviz/tq?tqx=out:csv";
+        }
+                                                                 else if (setName === "Otoczenie A2L") {
+            return "https://docs.google.com/spreadsheets/d/136teBpjMqcrzAPvtGfd1owqbH1DfeHay/gviz/tq?tqx=out:csv";
+        }
+                                                                      else if (setName === "Pogoda A2L") {
+            return "https://docs.google.com/spreadsheets/d/1J4CBWMXgEjaV-PIJhBvGABte83Jzpxl9/gviz/tq?tqx=out:csv";
+        }
+                                                                         else if (setName === "Pojazdy A2L") {
+            return "https://docs.google.com/spreadsheets/d/1SQaOWIkgml-DlXW00U1t_9My2gQeDI4r/gviz/tq?tqx=out:csv";
+        }
+                                                                             else if (setName === "Praca A2L") {
+            return "https://docs.google.com/spreadsheets/d/1JZqqeoMbRmwSFXEcOVaC0rJ5RcVo-K6a/gviz/tq?tqx=out:csv";
+        }
+                                                                                 else if (setName === "Przyimki A2L") {
+            return "https://docs.google.com/spreadsheets/d/1qYbnyDi7l9psDvUFc3i7JRhTgorJTxbW/gviz/tq?tqx=out:csv";
+        }
+                                                                                     else if (setName === "Przymiotniki 1 A2L") {
+            return "https://docs.google.com/spreadsheets/d/1IZESbk4XF6lf5EV6UjMFVN86J3zmWlbb/gviz/tq?tqx=out:csv";
+        }
+                                                                                         else if (setName === "Przysłówki A2L") {
+            return "https://docs.google.com/spreadsheets/d/1JGdJPyiaTdKGhKyu9WG9x4MMVYOgWPCL/gviz/tq?tqx=out:csv";
+        }
+                                                                                            else if (setName === "Przymiotniki 2 A2L") {
+            return "https://docs.google.com/spreadsheets/d/1ltwKe35r4gMZ2i8gSvr7GgMn2anpiKPz/gviz/tq?tqx=out:csv";
+        }
+                                                                                                else if (setName === "Rodzina A2L") {
+            return "https://docs.google.com/spreadsheets/d/1BMFB35nIvh1YGvZBW71ORYePsZYPFkSU/gviz/tq?tqx=out:csv";
+        }
+                                                                                                    else if (setName === "Rzeczowniki 1 A2L") {
+            return "https://docs.google.com/spreadsheets/d/1awOtXi8jMzfIMiaGTQdawbX5rL0C1VJR/gviz/tq?tqx=out:csv";
+        }
+                                                                                                        else if (setName === "Rzeczowniki 2 A2L") {
+            return "https://docs.google.com/spreadsheets/d/1dCmQh29ZWzojU-yWqzN3AutJmGtR2nRv/gviz/tq?tqx=out:csv";
+        }
+                                                                                                            else if (setName === "Rzeczowniki 3 A2L") {
+            return "https://docs.google.com/spreadsheets/d/1itW11gm4CakijT0787b4M3fH44e1V_eC/gviz/tq?tqx=out:csv";
+        }
+                                                                                                                else if (setName === "Rzeczowniki 4 A2L") {
+            return "https://docs.google.com/spreadsheets/d/1qAlWfUEGieKKGZ83Teji8vQFxRwbc6BQ/gviz/tq?tqx=out:csv";
+        }
+                                                                                                                    else if (setName === "Rzeczowniki 5 A2L") {
+            return "https://docs.google.com/spreadsheets/d/1C0BLOA5ppQ2TCiAc422wH-ZWV6tChDbM/gviz/tq?tqx=out:csv";
+        }
+                                                                                                                         else if (setName === "Rzeczowniki 6 A2L") {
+            return "https://docs.google.com/spreadsheets/d/1Gta6gujvBqhHRzTtb9M0HHREC6lpTExy/gviz/tq?tqx=out:csv";
+        }
+                                                                                                                else if (setName === "Spójniki A2L") {
+            return "https://docs.google.com/spreadsheets/d/1YbvEuSjFqHYo1Ai96MfILvmtDcN12ncR/gviz/tq?tqx=out:csv";
+        }
+                                                                                                            else if (setName === "Szkoła A2L") {
+            return "https://docs.google.com/spreadsheets/d/1IFg3i5vZDEFBauHhmaY74ZWOlGCN_dwz/gviz/tq?tqx=out:csv";
+        }
+                                                                                                    else if (setName === "Ubrania A2L") {
+            return "https://docs.google.com/spreadsheets/d/1ZtkTiLkAxVlBkb35tciigT5PKbXzpK2f/gviz/tq?tqx=out:csv";
+        }
+                                                                                          else if (setName === "Zaimki A2L") {
+            return "https://docs.google.com/spreadsheets/d/1LpcNBchCDOuQIU4tnHy9VQ5Pj3H86mja/gviz/tq?tqx=out:csv";
+        }
+                                                                                    else if (setName === "Zdrowie A2L") {
+            return "https://docs.google.com/spreadsheets/d/19-5MFH8ONTrISvhb9O8IjJEgAR40JD6j/gviz/tq?tqx=out:csv";
+        }
+                                                                            else if (setName === "Zwierzęta A2L") {
+            return "https://docs.google.com/spreadsheets/d/1Y2gQMxg4kplrg1gnJrDYz1GnDWQoqwu5/gviz/tq?tqx=out:csv";
+        }
+                
     
+
+
+
+
+
+
+
+        
+    
+        
         
         return null;
     }
@@ -743,4 +900,5 @@ document.addEventListener("DOMContentLoaded", () => {
  <button class="btnin2" onclick="speakGoogle(event)"style=margin-top:-10px;>&#128266;WYMOWA&#128266;</button>
 </body>
 </html>
+
 
