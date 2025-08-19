@@ -315,10 +315,11 @@ body { display: flex; flex-direction: column; overflow: hidden; }
 .nav-row{ margin-top: 6px; }
 
 /* WYMOWA: zawsze w nowej linii, wyśrodkowana, bez ujemnego marginesu */
-.btnin2{ display:block; margin:8px auto 0 !important; }
+.btnin2{ display:block; margin:10px auto 0 !important; }
 
         
-
+/* Delikatnie węższe selecty niż ekran */
+:root { --select-side-gap: 12px; } /* zmień 12px jeśli chcesz więcej/mniej */
 :root { --footer-gap: 30px; } /* odległość od dołu ekranu – zmienisz jedną liczbą */
 
 /* jeśli już masz to zrobione, ten blok się tylko nadpisze */
@@ -328,9 +329,7 @@ body { display: flex; flex-direction: column; }
 
 
 
-    /* Stały odstęp 10px między .nav-row a .btnin2 + dociśnięcie bloku na dół */
-html, body { height: 100dvh; margin: 0; }
-body { display: flex; flex-direction: column; overflow: hidden; }
+   
 
 /* Karta wypełnia wolną przestrzeń */
 .flashcard { flex: 1 1 auto; height: auto !important; min-height: 0; }
@@ -344,7 +343,7 @@ body { display: flex; flex-direction: column; overflow: hidden; }
 
         /* Delikatnie węższe selecty niż ekran */
 :root { --select-side-gap: 12px; } /* zmień 12px jeśli chcesz więcej/mniej */
-
+:root { --footer-gap: 30px; } /* odległość od dołu ekranu – zmienisz jedną liczbą */
 .select-row{
   box-sizing: border-box;
   padding-left: var(--select-side-gap);
@@ -1147,6 +1146,7 @@ function speakFourthColumn(event) {
 
 </body>
 </html>
+
 
 
 
