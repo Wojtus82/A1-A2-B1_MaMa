@@ -367,6 +367,19 @@ body { display: flex; flex-direction: column; }
 /* jeśli wcześniej dawałem .nav-row { margin-top:auto }, nadpisz to na 0 */
 .nav-row { margin-top: 0 !important; }
 
+
+
+        /* Responsywna szerokość + stała wysokość */
+:root{ --wymowa-h: 56px; }
+.btnin2{
+  width: min(90vw, 320px) !important; /* zwęża się na małych ekranach */
+  height: var(--wymowa-h) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
         
     </style>
 </head>
@@ -1159,6 +1172,7 @@ function speakFourthColumn(event) {
 
 </body>
 </html>
+
 
 
 
