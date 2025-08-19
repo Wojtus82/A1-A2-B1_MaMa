@@ -317,6 +317,20 @@ body { display: flex; flex-direction: column; overflow: hidden; }
 /* WYMOWA: zawsze w nowej linii, wyśrodkowana, bez ujemnego marginesu */
 .btnin2{ display:block; margin:8px auto 0 !important; }
 
+        
+
+:root { --footer-gap: 16px; } /* odległość od dołu ekranu – zmienisz jedną liczbą */
+
+/* jeśli już masz to zrobione, ten blok się tylko nadpisze */
+html, body { height: 100dvh; margin: 0; }
+body { display: flex; flex-direction: column; }
+
+/* WYMOWA: dociśnij na dół i zostaw stały odstęp od krawędzi */
+.btnin2{
+  margin-top: auto !important;                          /* pcha przycisk na dół */
+  margin-bottom: calc(var(--footer-gap) + env(safe-area-inset-bottom)) !important;
+  display: block;
+}
 
 
     </style>
@@ -1110,6 +1124,7 @@ function speakFourthColumn(event) {
 
 </body>
 </html>
+
 
 
 
