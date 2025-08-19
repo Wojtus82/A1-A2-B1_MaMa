@@ -333,6 +333,20 @@ body { display: flex; flex-direction: column; }
 }
 
 
+    /* Stały odstęp 10px między .nav-row a .btnin2 + dociśnięcie bloku na dół */
+html, body { height: 100dvh; margin: 0; }
+body { display: flex; flex-direction: column; overflow: hidden; }
+
+/* Karta wypełnia wolną przestrzeń */
+.flashcard { flex: 1 1 auto; height: auto !important; min-height: 0; }
+
+/* Nawigacja schodzi na dół kolumny, bez dodatkowego dołu */
+.nav-row { margin-top: auto !important; margin-bottom: 0 !important; }
+
+/* WYMOWA: dokładnie 10px nad przyciskami nawigacji */
+.btnin2 { display: block; margin: 10px auto 0 !important; }
+
+
     </style>
 </head>
 <body>
@@ -1124,6 +1138,7 @@ function speakFourthColumn(event) {
 
 </body>
 </html>
+
 
 
 
