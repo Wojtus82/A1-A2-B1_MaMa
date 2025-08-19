@@ -380,6 +380,12 @@ body { display: flex; flex-direction: column; }
   padding: 0;
 }
 
+
+
+/* 1. i 2. strona: 40px */
+.flashcard .front { font-size: 40px; }
+.flashcard .back  { font-size: 40px; }
+
         
     </style>
 </head>
@@ -578,6 +584,7 @@ else if (kategoria === 'A2 Low') {
     let currentIndex = 0;
     let history = [];
     const flashcardElement = document.getElementById("flashcard");
+    
     const prevBtn = document.getElementById("prevBtn");
     const nextBtn = document.getElementById("nextBtn");
     const body = document.body;
@@ -598,7 +605,7 @@ else if (kategoria === 'A2 Low') {
     const readBtn = document.getElementById("readFourthBtn");
     if (readBtn) readBtn.style.display = "block";
 }
-document.getElementById("word").style.fontSize = "17px";
+
 
 
 
@@ -954,6 +961,7 @@ document.getElementById("word").style.fontSize = "17px";
     function updateFlashcard() {
     if (flashcards.length === 0) return;
     flashcardElement.classList.remove("flipped"); // wracamy na front (1. strona)
+   
 
     const card = flashcards[currentIndex];
     document.getElementById("word").textContent = card.word;
@@ -963,7 +971,10 @@ document.getElementById("word").style.fontSize = "17px";
 
     // reset wyglądu frontu (1. strona)
     const wordEl = document.getElementById("word");
-    wordEl.style.fontSize = "40px";
+    wordEl.style.fontSize = "";   // wraca do rozmiaru z CSS (clamp)
+
+
+
     const readBtn = document.getElementById("readFourthBtn");
     if (readBtn) readBtn.style.display = "none";
 }
@@ -1003,6 +1014,7 @@ document.getElementById("word").style.fontSize = "17px";
 
     function flipFlashcard() {
         flashcardElement.classList.toggle("flipped");
+          
     }
 
     function speakGoogle(event) {
@@ -1172,6 +1184,7 @@ function speakFourthColumn(event) {
 
 </body>
 </html>
+
 
 
 
