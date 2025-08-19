@@ -361,6 +361,11 @@ body { display: flex; flex-direction: column; }
   margin-bottom: calc(var(--footer-gap) + env(safe-area-inset-bottom)) !important;
 }
 
+/* 20px między .flashcard a .nav-row (Poprzednia/Następna) */
+.flashcard { margin-bottom: 20px !important; }
+
+/* jeśli wcześniej dawałem .nav-row { margin-top:auto }, nadpisz to na 0 */
+.nav-row { margin-top: 0 !important; }
 
         
     </style>
@@ -1154,6 +1159,7 @@ function speakFourthColumn(event) {
 
 </body>
 </html>
+
 
 
 
