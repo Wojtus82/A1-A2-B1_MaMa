@@ -386,6 +386,22 @@ body { display: flex; flex-direction: column; }
 .flashcard .front { font-size: 40px; }
 .flashcard .back  { font-size: 40px; }
 
+
+
+        /* Ta sama „ramka” boczna co dla selectów */
+.nav-row{
+  box-sizing: border-box;
+  padding-inline: var(--select-side-gap, 12px); /* używa istniejącej zmiennej lub 12px */
+  width: 100%;
+}
+
+/* (opcjonalnie) upewnij się, że oba przyciski równomiernie wypełniają wiersz */
+.nav-row > button{
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+
         
     </style>
 </head>
@@ -1184,6 +1200,7 @@ function speakFourthColumn(event) {
 
 </body>
 </html>
+
 
 
 
