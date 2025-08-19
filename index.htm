@@ -354,15 +354,15 @@ body { display: flex; flex-direction: column; }
 .select-row select{ min-width: 0; }
 
 
-:root { --footer-gap: 30px; } /* odstęp od dołu ekranu */
+:root { --footer-gap: 45px; } /* odstęp od dołu ekranu */
 
 .btnin2{
   /* już masz margin-top:10px; to zostaje — dodajemy tylko dół */
   margin-bottom: calc(var(--footer-gap) + env(safe-area-inset-bottom)) !important;
 }
 
-/* 20px między .flashcard a .nav-row (Poprzednia/Następna) */
-.flashcard { margin-bottom: 20px !important; }
+/* 30px między .flashcard a .nav-row (Poprzednia/Następna) */
+.flashcard { margin-bottom: 30px !important; }
 
 /* jeśli wcześniej dawałem .nav-row { margin-top:auto }, nadpisz to na 0 */
 .nav-row { margin-top: 0 !important; }
@@ -1159,6 +1159,7 @@ function speakFourthColumn(event) {
 
 </body>
 </html>
+
 
 
 
