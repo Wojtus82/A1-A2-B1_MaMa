@@ -347,6 +347,20 @@ body { display: flex; flex-direction: column; overflow: hidden; }
 .btnin2 { display: block; margin: 10px auto 0 !important; }
 
 
+        /* Delikatnie węższe selecty niż ekran */
+:root { --select-side-gap: 12px; } /* zmień 12px jeśli chcesz więcej/mniej */
+
+.select-row{
+  box-sizing: border-box;
+  padding-left: var(--select-side-gap);
+  padding-right: var(--select-side-gap);
+}
+
+/* jeśli w .select-row masz flex i dwa selecty, to poniższe utrzyma je obok siebie */
+.select-row select{ min-width: 0; }
+
+
+
     </style>
 </head>
 <body>
@@ -1138,6 +1152,7 @@ function speakFourthColumn(event) {
 
 </body>
 </html>
+
 
 
 
